@@ -23,7 +23,7 @@ def forwards():
     sleep(1)
     motor_left.stop()
     motor_right.stop()
-    #stop1()
+    stop1()
 
 def backwards():
     motor_left.backward()
@@ -31,19 +31,19 @@ def backwards():
     sleep(1)
     motor_left.stop()
     motor_right.stop()
-    #stop1()
+    stop1()
 
 def right():
     motor_right.forward()
     sleep(1)
     motor_right.stop()
-    #stop1()
+    stop1()
 
 def left ():
     motor_left.forward()
     sleep(1)
     motor_left.stop()
-    #stop1()
+    stop1()
 
 app = App("Robot Controller")
 drive = PushButton(app, forwards, text = "Forwards")
