@@ -1,0 +1,54 @@
+from gpiozero import Robot, DistanceSensor, Motor
+from guizero import App, PushButton
+from time import sleep
+
+motor_left = Motor(forward=19, backward = 26)
+motor_right = Motor(forward=4, backward = 17)
+#robbot = Robot(left=(19,26), right = (4,17))
+sen = DistanceSensor(echo=8, trigger=18)
+def stop1():
+        if(sen.distance*100>5):
+            print(' Distance: ', sen.distance * 100)
+            motor_left.stop()
+            motor_right.stop()
+            motor_right.backward()
+            motor_left.backward()
+            sleep(2)
+            motor_left.stop()
+            motor_right.stop()
+
+def forwards():
+    motor_left.forward()
+    motor_right.forward()
+    sleep(1)
+    motor_left.stop()
+    motor_right.stop()
+    #stop1()
+
+def backwards():
+    motor_left.backward()
+    motor_right.backward()
+    sleep(1)
+    motor_left.stop()
+    motor_right.stop()
+    #stop1()
+
+def right():
+    motor_right.forward()
+    sleep(1)
+    motor_right.stop()
+    #stop1()
+
+def left ():
+    motor_left.forward()
+    sleep(1)
+    motor_left.stop()
+    #stop1()
+
+app = App("Robot Controller")
+drive = PushButton(app, forwards, text = "Forwards")
+reverse = PushButton(app, backwards, text = "Backwords")
+righturn = PushButton(app, right, text = "right")
+leftturn = PushButton(app, left, text = "left")
+app.display()
+
